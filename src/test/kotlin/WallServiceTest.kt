@@ -6,7 +6,8 @@ import org.junit.Before
 class WallServiceTest {
     @Before
     fun clearBeforeTest() {
-        WallService.clear()
+        WallService.clearPosts()
+        WallService.clearComments()
     }
 
     @Test

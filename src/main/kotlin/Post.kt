@@ -28,18 +28,23 @@ object WallService {
     var postId: Int = 0
     var comments = emptyArray<Comment>()
 
-    fun createComment(postId: Int, comment: Comment)  {
+    fun createComment(postId: Int, comment: Comment): Comment {
             for ((index, post) in posts.withIndex()) {
                 if (post.id == postId) {
                     comments += comment.copy()
-                    //return comment
+                    return comments.last()
                 }
-                throw PostNotFoundException ("no post with such ID $postId")
             }
+        throw PostNotFoundException ("no post with such ID $postId")
     }
 
-    fun clear() {
+    fun clearPosts() {
         posts = emptyArray()
+        postId = 0
+    }
+
+    fun clearComments() {
+        comments = emptyArray<Comment>()
         postId = 0
     }
 
